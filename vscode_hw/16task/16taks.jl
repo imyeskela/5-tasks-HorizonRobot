@@ -1,28 +1,15 @@
 using HorizonSideRobots
+include("../main_funcs.jl")
 
 r = Robot("16task/16task.sit", animate=true)
 
-left(side::HorizonSide)::HorizonSide = HorizonSide(mod(Int(side)-1, 4))
-
-function along!(r, side, max_steps)
-    num_steps = 0
-    while num_steps != max_steps
-        move!(r, side)
-        num_steps += 1
-    end
-    return num_steps
+mutable struct SpiralRobot <: SampleRobot
+    robo :: Robot
 end
+spiral_robot = SpiralRobot(r)
 
 
 
-function spiral!(r, side = Nord)
+stop_condition() = if ismarker(spiral_robot) return true else return false end
 
-    n=2
-    while !ismarker(r)       
-        side = left(side)
-        along!(r, side, n ÷ 2) # ÷ - это операция деления нацело
-        n += 1
-    end
-end
-
-spiral!(r)
+spiral!(stop_condition, spiral_robot)

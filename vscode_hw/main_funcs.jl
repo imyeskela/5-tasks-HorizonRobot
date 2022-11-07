@@ -94,9 +94,9 @@ end
 function spiral!(stop_condition::Function, r::SampleRobot, side = Nord)
 
     n=2
-    while !stop_condition(side)        
-        side = left(side)
-        along!(r, side, n ÷ 2) # ÷ - это операция деления нацело
+    while !stop_condition()        
+        side = clockwise(side)
+        maxsteps_along!(r, side, n ÷ 2) # ÷ - это операция деления нацело
         n += 1
     end
 end
