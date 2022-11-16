@@ -9,13 +9,7 @@ shuttle_robot = ShuttleRobot(r)
 
 
 stop_condition() = if isborder(shuttle_robot, HorizonSide(0)) return false else return true end
-# function stop_condition()
-#     if ismarker(shuttle_robot)
-#         return true
-#     else
-#         return false
-#     end
-# end
+
 
 function find_border(shuttle_robot)
     while !isborder(shuttle_robot, HorizonSide(0))
@@ -23,6 +17,5 @@ function find_border(shuttle_robot)
     end
     shuttle!(stop_condition, shuttle_robot, HorizonSide(3))
 end
-
 
 find_border(shuttle_robot)

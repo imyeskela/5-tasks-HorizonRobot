@@ -17,6 +17,7 @@ end
 
 inverse(side::HorizonSide)::HorizonSide = HorizonSide(mod(Int(side)+2, 4))
 clockwise(side :: HorizonSide) = HorizonSide(mod(Int(side)+1,4))
+anticlockwise( side :: HorizonSide) = HorizonSide(mod(Int(side)+3,4))
 
 try_move!(r::SampleRobot, side) = (!isborder(r, side) && (move!(r, side); return true); false)
 
