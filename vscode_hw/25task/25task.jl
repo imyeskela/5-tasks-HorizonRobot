@@ -11,7 +11,17 @@ end
 function paint(r, side)
     putmarker!(r)
     isborder(r, side) && return
+    move!(r, side)
     chess_along!(r, side)
 end
 
-chess_along!(r, HorizonSide(0))
+
+function start_chess(r, side, is_painted_start_point=false)
+    if is_painted_start_point
+        chess_along!(r, side)
+    else
+        paint(r, side)
+    end
+end
+
+start_chess(r, HorizonSide(0), true)

@@ -15,6 +15,12 @@ struct BaseRobot <: SampleRobot
     robo :: Robot
 end
 
+mutable struct CoordRobot <: SampleRobot
+    robot :: Robot
+    x :: Int
+    y :: Int
+end
+
 inverse(side::HorizonSide)::HorizonSide = HorizonSide(mod(Int(side)+2, 4))
 clockwise(side :: HorizonSide) = HorizonSide(mod(Int(side)+1,4))
 anticlockwise( side :: HorizonSide) = HorizonSide(mod(Int(side)+3,4))

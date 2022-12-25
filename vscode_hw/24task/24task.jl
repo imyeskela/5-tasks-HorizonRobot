@@ -16,3 +16,5 @@ function no_delayed_action!(r,side)
         half_along!(r, side)
     end
 end
+
+half_along!(r, HorizonSide(0))
